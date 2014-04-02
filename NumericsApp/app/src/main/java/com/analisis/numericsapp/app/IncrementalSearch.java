@@ -100,11 +100,12 @@ public class IncrementalSearch extends ActionBarActivity
         double i[][] = new double[iteraciones][3];
         //double yanterior = funcion(xanterior);
         double yanterior = f.evaluarFuncion(xanterior);
-        response.setText("Hola2");
+
         if (yanterior == 0)
         {
             System.out.println(xanterior + "es raiz");
             respuesta=xanterior + "es raiz";
+            response.setText(respuesta);
         }
         else
         {

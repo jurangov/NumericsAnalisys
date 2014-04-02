@@ -78,9 +78,9 @@ public class FixedPoint extends ActionBarActivity
         response = (TextView)findViewById(R.id.textView6);
         GetValues();
 
-        fixedPoint(xValue,iterations,Tol);
-        //matrix = fixedPoint(xValue,iterations,Tol);
-        //WrapperMatrix.matrix = matrix;
+        //fixedPoint(xValue,iterations,Tol);
+        matrix = fixedPoint(xValue,iterations,Tol);
+        WrapperMatrix.matrix = matrix;
     }
 
     public void GetValues()
@@ -97,7 +97,7 @@ public class FixedPoint extends ActionBarActivity
         EditText functionText = (EditText)findViewById(R.id.editText);
         f = new Funcion(functionText.getText().toString());
 
-        EditText GfunctionText = (EditText)findViewById(R.id.editText);
+        EditText GfunctionText = (EditText)findViewById(R.id.editText5);
         g = new Funcion(GfunctionText.getText().toString());
     }
 

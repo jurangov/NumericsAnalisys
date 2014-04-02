@@ -74,11 +74,11 @@ public class FalseRule extends ActionBarActivity {
 
     public void CalculateFalseRule(View v)
     {
-        response = (TextView)findViewById(R.id.textView5);
+        response = (TextView)findViewById(R.id.textView7);
         GetValues();
-        reglaFalsa(xInf, xSup, iterations, tolerance);
-        //matrix = reglaFalsa(xInf, xSup, iterations, tolerance);
-        //WrapperMatrix.matrix = matrix;
+        //reglaFalsa(xInf, xSup, iterations, tolerance);
+        matrix = reglaFalsa(xInf, xSup, iterations, tolerance);
+        WrapperMatrix.matrix = matrix;
     }
 
     public void GetValues()
@@ -112,14 +112,17 @@ public class FalseRule extends ActionBarActivity {
 
             System.out.println(xInf + "es raiz");
             respuesta=xInf + "es raiz";
+            response.setText(respuesta);
         } else if (ySup == 0) {
 
             System.out.println(xSup + "es raiz");
             respuesta=xSup + "es raiz";
+            response.setText(respuesta);
         } else if ((yInf * ySup) > 0) {
 
             System.out.println("El intervalo no tiene raices");
             respuesta="El intervalo no tiene raices";
+            response.setText(respuesta);
         } else {
             int contador=0;
             double xMedio = xInf - ((yInf * (xInf - xSup)) / (yInf - ySup));

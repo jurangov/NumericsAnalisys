@@ -57,7 +57,7 @@ public class Bisection extends ActionBarActivity {
 
     public void CalculateBisection(View v)
     {
-        response = (TextView)findViewById(R.id.textView5);
+        response = (TextView)findViewById(R.id.textView7);
         GetValues();
         bisection(xValue, XsValue, iterations, tolerance);
         //matrix = bisection(xValue, XsValue, iterations, tolerance);
@@ -90,12 +90,15 @@ public class Bisection extends ActionBarActivity {
         if (yInf == 0) {
             System.out.println(xInf + "xInf es raiz");
             respuesta=xInf + "xInf es raiz";
+            response.setText(respuesta);
         } else if (ySup == 0) {
             System.out.println(xSup + "xSup es raiz");
             respuesta=xSup + "xSup es raiz";
+            response.setText(respuesta);
         } else if ((yInf * ySup) > 0) {
             System.out.println("Posiblemente");
             respuesta="Posiblemente";
+            response.setText(respuesta);
         } else {
 
             int contador = 0;
