@@ -1,10 +1,12 @@
 package com.analisis.numericsapp.app;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -36,7 +38,26 @@ public class Newton extends ActionBarActivity
         
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.newton, menu);
+
+        setupButtonTableButton();
         return true;
+    }
+
+    private void setupButtonTableButton()
+    {
+        Button bt1 =(Button) findViewById(R.id.TableButton);
+
+        bt1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent myIntent = new Intent();
+                Bundle b = new Bundle();
+                b.putSerializable("clase", "Newton");
+                myIntent.setClass(getApplicationContext(), AnswerTable.class);
+                myIntent.putExtras(b);
+                startActivity(myIntent);
+            }
+        });
     }
 
     @Override
