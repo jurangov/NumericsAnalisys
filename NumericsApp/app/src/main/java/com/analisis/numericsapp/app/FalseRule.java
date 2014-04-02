@@ -44,19 +44,19 @@ public class FalseRule extends ActionBarActivity {
 
     private void setupButtonTableButton()
     {
-     /*   Button bt1 =(Button) findViewById(R.id.TableButton);
+        Button bt1 =(Button) findViewById(R.id.TableButton);
 
         bt1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent myIntent = new Intent();
                 Bundle b = new Bundle();
-                b.putSerializable("clase", "IncrementalSearch");
+                b.putSerializable("clase", "FalseRule");
                 myIntent.setClass(getApplicationContext(), AnswerTable.class);
                 myIntent.putExtras(b);
                 startActivity(myIntent);
             }
-        });*/
+        });
     }
 
 
@@ -125,7 +125,7 @@ public class FalseRule extends ActionBarActivity {
             response.setText(respuesta);
         } else {
             int contador=0;
-            double xMedio = xInf - ((yInf * (xInf - xSup)) / (yInf - ySup));
+            double xMedio = xInf - ((yInf * (xSup - xInf)) / (ySup - yInf));
 
             double yMedio = f.evaluarFuncion(xMedio);
 
@@ -186,22 +186,23 @@ public class FalseRule extends ActionBarActivity {
             }
 
 
-            if (yMedio == 0) {
+            if (yMedio == 0)
+            {
 
                 System.out.println("xMedio=" + xMedio + "es una raiz");
                 respuesta="xMedio=" + xMedio + "es una raiz";
                 response.setText(respuesta);
-                if (E <= tolerancia) {
+            }
+            else if (E <= tolerancia) {
 
-                    System.out.println("xMedio=" + xMedio + "es una raiz con tolerancia" + tolerancia);
-                    respuesta="xMedio=" + xMedio + "es una raiz con tolerancia" + tolerancia;
-                    response.setText(respuesta);
-                } else {
+                System.out.println("xMedio=" + xMedio + "es una raiz con tolerancia" + tolerancia);
+                respuesta="xMedio=" + xMedio + "es una raiz con tolerancia" + tolerancia;
+                response.setText(respuesta);
+            } else {
 
-                    System.out.println("No dio :S ");
-                    respuesta="No dio :S ";
-                    response.setText(respuesta);
-                }
+                System.out.println("No dio :S ");
+                respuesta="No dio :S ";
+                response.setText(respuesta);
             }
         }
 
