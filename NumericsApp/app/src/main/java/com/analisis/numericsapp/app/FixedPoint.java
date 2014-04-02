@@ -21,8 +21,8 @@ public class FixedPoint extends ActionBarActivity
     public static TextView response;
     public static double [][] matrix;
 
-    public int xValue;
-    public int Tol;
+    public double xValue;
+    public double Tol;
     public int iterations;
 
 
@@ -78,17 +78,18 @@ public class FixedPoint extends ActionBarActivity
         response = (TextView)findViewById(R.id.textView6);
         GetValues();
 
-        matrix = fixedPoint(xValue,iterations,Tol);
-        WrapperMatrix.matrix = matrix;
+        fixedPoint(xValue,iterations,Tol);
+        //matrix = fixedPoint(xValue,iterations,Tol);
+        //WrapperMatrix.matrix = matrix;
     }
 
     public void GetValues()
     {
         EditText xvalueText = (EditText)findViewById(R.id.editText2);
-        xValue = Integer.parseInt(xvalueText.getText().toString());
+        xValue = Double.parseDouble(xvalueText.getText().toString());
 
         EditText deltaText = (EditText)findViewById(R.id.editText3);
-        Tol = Integer.parseInt(deltaText.getText().toString());
+        Tol = Double.parseDouble(deltaText.getText().toString());
 
         EditText iterationsText = (EditText)findViewById(R.id.editText4);
         iterations = Integer.parseInt(iterationsText.getText().toString());
@@ -109,7 +110,7 @@ public class FixedPoint extends ActionBarActivity
         double error = tolerancia + 1;
 
         int contador = 0;
-        i[contador][0] = contador;
+        i[contador][0] = (double)contador;
         i[contador][1] = xanterior;
         i[contador][2] = y;
         i[contador][3] = error;
@@ -127,7 +128,7 @@ public class FixedPoint extends ActionBarActivity
 
             contador = contador + 1;
 
-            i[contador][0] = contador;
+            i[contador][0] = (double)contador;
             i[contador][1] = xactual;
             i[contador][2] = y;
             i[contador][3] = error;
