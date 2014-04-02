@@ -75,6 +75,9 @@ public class Secant extends ActionBarActivity {
         EditText iterationsText = (EditText)findViewById(R.id.editText4);
         iteraciones = Integer.parseInt(iterationsText.getText().toString());
 
+        EditText toleranceText = (EditText)findViewById(R.id.editText4);
+        tolerancia = Integer.parseInt(toleranceText.getText().toString());
+
         EditText functionText = (EditText)findViewById(R.id.editText);
         f = new Funcion(functionText.getText().toString());
 
