@@ -98,11 +98,11 @@ public class Bisection extends ActionBarActivity {
             respuesta="Posiblemente";
         } else {
 
-            int contador=0;
+            int contador = 0;
             double xMedio = (xInf + xSup) / 2;
             double yMedio = f.evaluarFuncion(xMedio);
             double E = tolerance + 1;
-            i[contador][0] = contador;
+            i[contador][0] = (double)contador;
             i[contador][1] = xInf;
             i[contador][2] = xSup;
             i[contador][3] = xMedio;
@@ -143,12 +143,15 @@ public class Bisection extends ActionBarActivity {
             if (yMedio == 0) {
                 System.out.println("xMedio=" + xMedio + "es raiz");
                 respuesta="xMedio=" + xMedio + "es raiz";
+                response.setText(respuesta);
             } else if (E < tolerance) {
                 System.out.println("xMedio=" + xMedio + "es raiz con error " + E);
                 respuesta="xMedio=" + xMedio + "es raiz con error " + E;
+                response.setText(respuesta);
             } else {
                 System.out.println("fracaso");
                 respuesta="fracaso";
+                response.setText(respuesta);
             }
         }
         return i;
