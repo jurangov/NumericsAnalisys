@@ -1,11 +1,21 @@
 package com.analisis.numericsapp.app;
 
+import android.app.ActionBar;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.PopupWindow;
+import android.widget.TextView;
+
+import com.analisis.numericsapp.app.EquationSystemPackage.EquationSystemMatrix;
+import com.analisis.numericsapp.app.OneVarEquation.IncrementalSearch;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -22,92 +32,80 @@ public class MainActivity extends ActionBarActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
 
-        setupButtonIncrementalSearch();
-        setupButtonBisection();
-        setupButtonFalseRule();
-        setupButtonFixedPoint();
-        setupButtonNewton();
-        setupButtonSecant();
-        setupButtonMultipleRoot();
+        setupButtonOneVariableEq();
+        setupButtonEquationSystem();
         return true;
 
 
     }
 
-    private void setupButtonMultipleRoot() {
-        Button bt1 =(Button) findViewById(R.id.MultipleRoot);
+    private void setUpFunction()
+    {
 
-        bt1.setOnClickListener(new View.OnClickListener() {
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+
+        alert.setTitle("One variable equation");
+        alert.setMessage("Write a function");
+
+        // Set an EditText view to get user input
+        final EditText input = new EditText(this);
+        alert.setView(input);
+
+        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+
+                // Do something with value!
+                WrapperMatrix.GlobalFunction = new Funcion(input.getText().toString());
+                startActivity(new Intent(getApplicationContext(),OneVariableEquation.class));
+            }
+        });
+
+        alert.show();
+
+    }
+
+    private void setUpMatrixOrder()
+    {
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+
+        alert.setTitle("Equation System");
+        alert.setMessage("Write the matrix order");
+
+        // Set an EditText view to get user input
+        final EditText input = new EditText(this);
+        alert.setView(input);
+
+        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+
+                // Do something with value!
+                WrapperMatrix.MatrixOrder = Integer.parseInt(input.getText().toString());
+                startActivity(new Intent(getApplicationContext(),EquationSystemMatrix.class));
+            }
+        });
+
+        alert.show();
+    }
+
+    private void setupButtonOneVariableEq() {
+        Button bt1 =(Button) findViewById(R.id.oneVarEquation);
+
+        bt1.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),MultipleRoot.class));
+                setUpFunction();
             }
         });
     }
 
-    private void setupButtonSecant() {
-        Button bt1 =(Button) findViewById(R.id.Secant);
+    private void setupButtonEquationSystem() {
+
+        Button bt1 =(Button) findViewById(R.id.equationSys);
 
         bt1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),Secant.class));
-            }
-        });
-    }
-
-    private void setupButtonNewton() {
-        Button bt1 =(Button) findViewById(R.id.Newton);
-
-        bt1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),Newton.class));
-            }
-        });
-    }
-
-    private void setupButtonFixedPoint() {
-        Button bt1 =(Button) findViewById(R.id.FixedPoint);
-
-        bt1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),FixedPoint.class));
-            }
-        });
-    }
-
-    private void setupButtonBisection() {
-        Button bt1 =(Button) findViewById(R.id.Bisection);
-
-        bt1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),Bisection.class));
-            }
-        });
-    }
-
-    private void setupButtonFalseRule() {
-        Button bt1 =(Button) findViewById(R.id.FalseRule);
-
-        bt1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),FalseRule.class));
-            }
-        });
-    }
-
-    private void setupButtonIncrementalSearch() {
-
-        Button bt1 =(Button) findViewById(R.id.IncrementalSearch);
-
-        bt1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),IncrementalSearch.class));
+                setUpMatrixOrder();
             }
         });
     }

@@ -6,23 +6,13 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.analisis.numericsapp.app.MainActivity">
+    tools:context="com.analisis.numericsapp.app.EquationSystemPackage.EquationSystemMatrix">
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="One Variable Equations"
-        android:id="@+id/oneVarEquation"
+        android:text="Select Method"
+        android:id="@+id/buttonMethod"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Equation Systems"
-        android:id="@+id/equationSys"
-        android:layout_alignEnd="@+id/oneVarEquation"
-        android:layout_alignStart="@+id/oneVarEquation"
-        android:layout_below="@+id/oneVarEquation"
-        android:layout_centerHorizontal="true" />
-
 </RelativeLayout>

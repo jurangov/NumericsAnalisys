@@ -36,7 +36,7 @@ public class AnswerTable extends ActionBarActivity {
             {
                 TextView tv1=new TextView(this);
                 tv1.setId(j);
-                tv1.setText(String.format("|  %.3f", Amatrix[i][j]));
+                tv1.setText(String.format("  |  %.3f", Amatrix[i][j]));
                 tbrow2.addView(tv1);
             }
             ll.addView(tbrow2);

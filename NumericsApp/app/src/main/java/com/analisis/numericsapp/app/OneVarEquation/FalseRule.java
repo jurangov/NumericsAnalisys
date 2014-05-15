@@ -1,23 +1,30 @@
-package com.analisis.numericsapp.app;
+package com.analisis.numericsapp.app.OneVarEquation;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class Bisection extends ActionBarActivity {
+import com.analisis.numericsapp.app.AnswerTable;
+import com.analisis.numericsapp.app.Funcion;
+import com.analisis.numericsapp.app.R;
+import com.analisis.numericsapp.app.WrapperMatrix;
 
-    public double xValue;
-    public int iterations;
-    public double XsValue;
-    public double tolerance;
+public class FalseRule extends ActionBarActivity {
+
+    double xInf;
+    double xSup;
+    int iterations;
+    double tolerance;
 
     private static int contadorFilas=0;
     public static Funcion f= null;
-    private static String respuesta;
+    public static String respuesta;
 
     public static TextView response;
     public static double [][] matrix;
@@ -25,7 +32,7 @@ public class Bisection extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bisection);
+        setContentView(R.layout.activity_false_rule);
     }
 
 
@@ -33,15 +40,30 @@ public class Bisection extends ActionBarActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.bisection, menu);
+        getMenuInflater().inflate(R.menu.false_rule, menu);
 
         setupButtonTableButton();
         return true;
     }
 
-    private void setupButtonTableButton() {
 
+    private void setupButtonTableButton()
+    {
+        Button bt1 =(Button) findViewById(R.id.TableButton);
+
+        bt1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent myIntent = new Intent();
+                Bundle b = new Bundle();
+                b.putSerializable("clase", "FalseRule");
+                myIntent.setClass(getApplicationContext(), AnswerTable.class);
+                myIntent.putExtras(b);
+                startActivity(myIntent);
+            }
+        });
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -55,121 +77,161 @@ public class Bisection extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void CalculateBisection(View v)
+    public void CalculateFalseRule(View v)
     {
         response = (TextView)findViewById(R.id.textView7);
         GetValues();
-        bisection(xValue, XsValue, iterations, tolerance);
-        //matrix = bisection(xValue, XsValue, iterations, tolerance);
-        //WrapperMatrix.matrix = matrix;
+        //reglaFalsa(xInf, xSup, iterations, tolerance);
+        matrix = reglaFalsa(xInf, xSup, iterations, tolerance);
+        WrapperMatrix.matrix = matrix;
     }
 
     public void GetValues()
     {
         EditText xvalueText = (EditText)findViewById(R.id.editText2);
-        xValue = Double.parseDouble(xvalueText.getText().toString());
+        xInf = Double.parseDouble(xvalueText.getText().toString());
 
         EditText iterationsText = (EditText)findViewById(R.id.editText5);
         iterations = Integer.parseInt(iterationsText.getText().toString());
 
         EditText XsValueText = (EditText)findViewById(R.id.editText3);
-        XsValue = Double.parseDouble(XsValueText.getText().toString());
+        xSup = Double.parseDouble(XsValueText.getText().toString());
 
         EditText ToleranceText = (EditText)findViewById(R.id.editText4);
         tolerance = Double.parseDouble(ToleranceText.getText().toString());
 
-        EditText functionText = (EditText)findViewById(R.id.editText);
-        f = new Funcion(functionText.getText().toString());
+        f = WrapperMatrix.GlobalFunction;
     }
 
 
-    public static double[][] bisection(double xInf, double xSup, int iterations, double tolerance) {
-        double i[][] = new double[iterations][6];
+    public static double [][]reglaFalsa(double xInf, double xSup, int iteraciones, double tolerancia) {
+
+        double i[][] = new double[iteraciones][6];
+
         double yInf = f.evaluarFuncion(xInf);
+
         double ySup = f.evaluarFuncion(xSup);
+
         if (yInf == 0) {
-            System.out.println(xInf + "xInf es raiz");
-            respuesta=xInf + "xInf es raiz";
+
+            System.out.println(xInf + "es raiz");
+            respuesta=xInf + "es raiz";
             response.setText(respuesta);
         } else if (ySup == 0) {
-            System.out.println(xSup + "xSup es raiz");
-            respuesta=xSup + "xSup es raiz";
+
+            System.out.println(xSup + "es raiz");
+            respuesta=xSup + "es raiz";
             response.setText(respuesta);
         } else if ((yInf * ySup) > 0) {
-            System.out.println("Posiblemente");
-            respuesta="Posiblemente";
+
+            System.out.println("El intervalo no tiene raices");
+            respuesta="El intervalo no tiene raices";
             response.setText(respuesta);
         } else {
+            int contador=0;
+            double xMedio = xInf - ((yInf * (xSup - xInf)) / (ySup - yInf));
 
-            int contador = 0;
-            double xMedio = (xInf + xSup) / 2;
             double yMedio = f.evaluarFuncion(xMedio);
-            double E = tolerance + 1;
+
+            double E = (tolerancia + 1);
             i[contador][0] = (double)contador;
             i[contador][1] = xInf;
             i[contador][2] = xSup;
             i[contador][3] = xMedio;
             i[contador][4] = yMedio;
             i[contador][5] = E;
+
             contadorFilas++;
+
             contador = 1;
-            while (yMedio != 0 && E > tolerance &&  contador <= iterations) {
-                if ((yInf * yMedio) < 0) {
-                    xSup = xMedio;
-                    ySup = yMedio;
-                } else {
+
+            while (yMedio != 0 && E > tolerancia && contador < iteraciones) {
+
+                double xAuxiliar = xMedio;
+
+                if (yInf * yMedio > 0) {
                     xInf = xMedio;
                     yInf = yMedio;
+
+                } else {
+
+                    xSup = xMedio;
+
+                    ySup = yMedio;
+
                 }
-                double Aux = xMedio;
 
+                xMedio = xInf - ((yInf * (xInf - xSup)) / (yInf - ySup));
 
-                xMedio = (xSup + xInf) / 2;
                 yMedio = f.evaluarFuncion(xMedio);
-                E = Math.abs(xMedio - Aux);
+
+                E = Math.abs(xMedio - xAuxiliar);
+                contador = contador + 1;
                 i[contador][0] = contador;
                 i[contador][1] = xInf;
                 i[contador][2] = xSup;
                 i[contador][3] = xMedio;
                 i[contador][4] = yMedio;
                 i[contador][5] = E;
+
                 contadorFilas++;
-                contador = contador + 1;
+
+
             }
-            for (int j = 0; j < iterations; j++) {
+
+            for (int j = 0; j < iteraciones; j++) {
 
                 for (int k = 0; k < 6; k++) {
+
                     System.out.print(i[j][k] + "                       ");
                 }
+
                 System.out.println("");
             }
-            if (yMedio == 0) {
-                System.out.println("xMedio=" + xMedio + "es raiz");
-                respuesta="xMedio=" + xMedio + "es raiz";
+
+
+            if (yMedio == 0)
+            {
+
+                System.out.println("xMedio=" + xMedio + "es una raiz");
+                respuesta="xMedio=" + xMedio + "es una raiz";
                 response.setText(respuesta);
-            } else if (E < tolerance) {
-                System.out.println("xMedio=" + xMedio + "es raiz con error " + E);
-                respuesta="xMedio=" + xMedio + "es raiz con error " + E;
+            }
+            else if (E <= tolerancia) {
+
+                System.out.println("xMedio=" + xMedio + "es una raiz con tolerancia" + tolerancia);
+                respuesta="xMedio=" + xMedio + "es una raiz con tolerancia" + tolerancia;
                 response.setText(respuesta);
             } else {
-                System.out.println("fracaso");
-                respuesta="fracaso";
+
+                System.out.println("No dio :S ");
+                respuesta="No dio :S ";
                 response.setText(respuesta);
             }
         }
-        return i;
+
+        return i ;
+    }
+
+    public static int getContador(){
+
+        return contadorFilas;
+
     }
     public static String SetRespuesta(){
         return respuesta;
     }
-    public static int getContador(){
-        return contadorFilas;
-    }
+
     public static void SetContador(){
+
         contadorFilas=0;
+
     }
+
     public static void SetFuncion(Funcion funcion){
+
         f=funcion;
+
     }
 
 }

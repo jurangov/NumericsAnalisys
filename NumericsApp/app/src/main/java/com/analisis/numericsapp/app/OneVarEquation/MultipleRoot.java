@@ -1,4 +1,4 @@
-package com.analisis.numericsapp.app;
+package com.analisis.numericsapp.app.OneVarEquation;
 
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
@@ -9,6 +9,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.analisis.numericsapp.app.AnswerTable;
+import com.analisis.numericsapp.app.Funcion;
+import com.analisis.numericsapp.app.R;
+import com.analisis.numericsapp.app.WrapperMatrix;
 
 public class MultipleRoot extends ActionBarActivity
 {
@@ -94,8 +99,7 @@ public class MultipleRoot extends ActionBarActivity
         EditText iterationsText = (EditText)findViewById(R.id.editText2);
         iterations = Integer.parseInt(iterationsText.getText().toString());
 
-        EditText functionText = (EditText)findViewById(R.id.editText);
-        f = new Funcion(functionText.getText().toString());
+        f = WrapperMatrix.GlobalFunction;
 
         EditText DfunctionText = (EditText)findViewById(R.id.editText5);
         f1d = new Funcion(DfunctionText.getText().toString());

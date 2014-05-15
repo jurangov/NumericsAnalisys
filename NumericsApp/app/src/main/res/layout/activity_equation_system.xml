@@ -1,0 +1,95 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.analisis.numericsapp.app.EquationSystem">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gaussian Elimination"
+        android:id="@+id/gaussianElimintation"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Partial Pivoting"
+        android:id="@+id/partialPivoting"
+        android:layout_below="@+id/gaussianElimintation"
+        android:layout_alignRight="@+id/gaussianElimintation"
+        android:layout_alignEnd="@+id/gaussianElimintation"
+        android:layout_alignLeft="@+id/gaussianElimintation"
+        android:layout_alignStart="@+id/gaussianElimintation" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total Pivoting"
+        android:id="@+id/totalPivoting"
+        android:layout_below="@+id/partialPivoting"
+        android:layout_alignRight="@+id/partialPivoting"
+        android:layout_alignEnd="@+id/partialPivoting"
+        android:layout_alignLeft="@+id/partialPivoting"
+        android:layout_alignStart="@+id/partialPivoting" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Doolittle"
+        android:id="@+id/doolittle"
+        android:layout_below="@+id/totalPivoting"
+        android:layout_alignRight="@+id/totalPivoting"
+        android:layout_alignEnd="@+id/totalPivoting"
+        android:layout_alignLeft="@+id/totalPivoting"
+        android:layout_alignStart="@+id/totalPivoting" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Crout"
+        android:id="@+id/crout"
+        android:layout_below="@+id/doolittle"
+        android:layout_alignRight="@+id/doolittle"
+        android:layout_alignEnd="@+id/doolittle"
+        android:layout_alignLeft="@+id/doolittle"
+        android:layout_alignStart="@+id/doolittle" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cholesky"
+        android:id="@+id/cholesky"
+        android:layout_below="@+id/crout"
+        android:layout_alignRight="@+id/crout"
+        android:layout_alignEnd="@+id/crout"
+        android:layout_alignLeft="@+id/crout"
+        android:layout_alignStart="@+id/crout" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gauss Seidel"
+        android:id="@+id/gaussSeidel"
+        android:layout_below="@+id/cholesky"
+        android:layout_alignRight="@+id/cholesky"
+        android:layout_alignEnd="@+id/cholesky"
+        android:layout_alignLeft="@+id/cholesky"
+        android:layout_alignStart="@+id/cholesky" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Jacobi"
+        android:id="@+id/jacobi"
+        android:layout_below="@+id/gaussSeidel"
+        android:layout_alignRight="@+id/gaussSeidel"
+        android:layout_alignEnd="@+id/gaussSeidel"
+        android:layout_alignLeft="@+id/gaussSeidel"
+        android:layout_alignStart="@+id/gaussSeidel" />
+</RelativeLayout>

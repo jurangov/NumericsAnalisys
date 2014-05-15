@@ -6,4 +6,9 @@ package com.analisis.numericsapp.app;
 public class WrapperMatrix
 {
     public static double[][] matrix;
+    public static Funcion GlobalFunction;
+
+    public static double [][] MatrixA;
+    public static double [] VectorB;
+    public static int MatrixOrder;
 }
