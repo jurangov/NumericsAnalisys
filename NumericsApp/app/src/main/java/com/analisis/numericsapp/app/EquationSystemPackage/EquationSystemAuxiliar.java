@@ -65,4 +65,19 @@ public class EquationSystemAuxiliar
     }
 
 
+    public static double[] RegresiveSustitutionLU(double U[][], double z[])
+    {
+        int n = U.length;
+        double x[] = new double[n];
+        for (int i = n - 1; i >= 0; i--)
+        {
+            double suma = 0.0;
+            for (int p = i + 1; p < n; p++)
+            {
+                suma = suma + (U[i][p] * x[p]);
+            }
+            x[i] = (z[i] - suma) / U[i][i];
+        }
+        return x;
+    }
 }

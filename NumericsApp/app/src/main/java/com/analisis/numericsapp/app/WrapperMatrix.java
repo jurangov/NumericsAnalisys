@@ -11,4 +11,7 @@ public class WrapperMatrix
     public static double [][] MatrixA;
     public static double [] VectorB;
     public static int MatrixOrder;
+    public static double [] jacobyX;
+    public static double tolerance;
+    public static int iterations;
 }

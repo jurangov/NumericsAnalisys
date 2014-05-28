@@ -8,7 +8,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.analisis.numericsapp.app.EquationSystemPackage.Cholesky;
+import com.analisis.numericsapp.app.EquationSystemPackage.Crout;
+import com.analisis.numericsapp.app.EquationSystemPackage.Doolittle;
 import com.analisis.numericsapp.app.EquationSystemPackage.GaussianElimination;
+import com.analisis.numericsapp.app.EquationSystemPackage.PartialPivoting;
+import com.analisis.numericsapp.app.EquationSystemPackage.TotalPivoting;
 import com.analisis.numericsapp.app.OneVarEquation.MultipleRoot;
 
 
@@ -66,7 +71,7 @@ public class EquationSystem extends ActionBarActivity {
         bt1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),MultipleRoot.class));
+                startActivity(new Intent(getApplicationContext(),Cholesky.class));
             }
         });
     }
@@ -77,7 +82,7 @@ public class EquationSystem extends ActionBarActivity {
         bt1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),MultipleRoot.class));
+                startActivity(new Intent(getApplicationContext(),Crout.class));
             }
         });
     }
@@ -88,7 +93,7 @@ public class EquationSystem extends ActionBarActivity {
         bt1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),MultipleRoot.class));
+                startActivity(new Intent(getApplicationContext(),Doolittle.class));
             }
         });
     }
@@ -99,7 +104,7 @@ public class EquationSystem extends ActionBarActivity {
         bt1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),MultipleRoot.class));
+                startActivity(new Intent(getApplicationContext(),TotalPivoting.class));
             }
         });
     }
@@ -110,7 +115,7 @@ public class EquationSystem extends ActionBarActivity {
         bt1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),MultipleRoot.class));
+                startActivity(new Intent(getApplicationContext(),PartialPivoting.class));
             }
         });
     }
