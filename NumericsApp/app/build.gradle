@@ -19,7 +19,7 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:+'
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile files('libs/jep-2.4.1.jar')
+    compile 'com.android.support:appcompat-v7:19.+'
 }

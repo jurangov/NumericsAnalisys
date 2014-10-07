@@ -34,6 +34,7 @@ public class MainActivity extends ActionBarActivity {
 
         setupButtonOneVariableEq();
         setupButtonEquationSystem();
+        setUpButtonInterpolation();
         return true;
 
 
@@ -62,6 +63,29 @@ public class MainActivity extends ActionBarActivity {
 
         alert.show();
 
+    }
+
+    public void setUpPoints()
+    {
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+
+        alert.setTitle("Interpolation");
+        alert.setMessage("Number of points");
+
+        // Set an EditText view to get user input
+        final EditText input = new EditText(this);
+        alert.setView(input);
+
+        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+
+                // Do something with value!
+                WrapperMatrix.pointNumbers = Integer.parseInt(input.getText().toString());
+                startActivity(new Intent(getApplicationContext(),InterpolationMethod.class));
+            }
+        });
+
+        alert.show();
     }
 
     private void setUpMatrixOrder()
@@ -110,5 +134,28 @@ public class MainActivity extends ActionBarActivity {
         });
     }
 
+    private void setUpButtonInterpolation()
+    {
+        Button bt1 =(Button) findViewById(R.id.buttonInterpolation);
+
+        bt1.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(),InterpolationMethod.class));
+            }
+        });
+    }
+
+    private void setUpButtonIntegration()
+    {
+        Button bt1 =(Button) findViewById(R.id.buttonIntegration);
+
+        bt1.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(),InterpolationMethod.class));
+            }
+        });
+    }
 
 }

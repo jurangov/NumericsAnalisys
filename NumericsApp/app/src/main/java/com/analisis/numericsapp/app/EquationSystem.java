@@ -11,7 +11,9 @@ import android.widget.Button;
 import com.analisis.numericsapp.app.EquationSystemPackage.Cholesky;
 import com.analisis.numericsapp.app.EquationSystemPackage.Crout;
 import com.analisis.numericsapp.app.EquationSystemPackage.Doolittle;
+import com.analisis.numericsapp.app.EquationSystemPackage.GaussSeidel;
 import com.analisis.numericsapp.app.EquationSystemPackage.GaussianElimination;
+import com.analisis.numericsapp.app.EquationSystemPackage.Jacoby;
 import com.analisis.numericsapp.app.EquationSystemPackage.PartialPivoting;
 import com.analisis.numericsapp.app.EquationSystemPackage.TotalPivoting;
 import com.analisis.numericsapp.app.OneVarEquation.MultipleRoot;
@@ -49,7 +51,7 @@ public class EquationSystem extends ActionBarActivity {
         bt1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),MultipleRoot.class));
+                startActivity(new Intent(getApplicationContext(),Jacoby.class));
             }
         });
     }
@@ -60,7 +62,7 @@ public class EquationSystem extends ActionBarActivity {
         bt1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),MultipleRoot.class));
+                startActivity(new Intent(getApplicationContext(),GaussSeidel.class));
             }
         });
     }

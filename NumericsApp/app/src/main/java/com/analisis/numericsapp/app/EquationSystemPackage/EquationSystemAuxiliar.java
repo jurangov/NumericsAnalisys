@@ -1,8 +1,6 @@
 package com.analisis.numericsapp.app.EquationSystemPackage;
 
-/**
- * Created by juancho
- */
+
 public class EquationSystemAuxiliar
 {
 

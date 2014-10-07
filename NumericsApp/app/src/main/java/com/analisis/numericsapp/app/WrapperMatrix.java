@@ -14,4 +14,6 @@ public class WrapperMatrix
     public static double [] jacobyX;
     public static double tolerance;
     public static int iterations;
+    public static int pointNumbers;
+    public static double interValue;
 }

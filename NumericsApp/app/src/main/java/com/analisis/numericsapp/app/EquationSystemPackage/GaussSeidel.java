@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -19,15 +18,14 @@ import com.analisis.numericsapp.app.AnswerTable;
 import com.analisis.numericsapp.app.R;
 import com.analisis.numericsapp.app.WrapperMatrix;
 
-import static com.analisis.numericsapp.app.WrapperMatrix.MatrixA;
 import static com.analisis.numericsapp.app.WrapperMatrix.MatrixOrder;
 
-public class Jacoby extends ActionBarActivity {
+public class GaussSeidel extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_jacoby);
+        setContentView(R.layout.activity_gauss_seidel);
     }
 
 
@@ -37,10 +35,11 @@ public class Jacoby extends ActionBarActivity {
     private static double x [];
     public EditText[] editTextArray;
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.jacoby, menu);
+        getMenuInflater().inflate(R.menu.gauss_seidel, menu);
 
         setupTableButton();
         SetUpInitialVector();
@@ -48,6 +47,8 @@ public class Jacoby extends ActionBarActivity {
         A = WrapperMatrix.MatrixA;
         b = WrapperMatrix.VectorB;
         x = new double[MatrixOrder];
+
+        seidel(WrapperMatrix.tolerance, WrapperMatrix.iterations);
 
         return true;
     }
@@ -77,11 +78,11 @@ public class Jacoby extends ActionBarActivity {
         LinearLayout linearLayout = (LinearLayout)findViewById(R.id.linearLayout2);
 
         linearLayout.addView(sv, 0);
-
     }
 
-    private void setupTableButton() {
-        Button bt1 =(Button) findViewById(R.id.buttonJacobi);
+    private void setupTableButton()
+    {
+        Button bt1 =(Button) findViewById(R.id.buttonSeidel);
 
         bt1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,13 +99,13 @@ public class Jacoby extends ActionBarActivity {
                     x[j] = Double.parseDouble(editTextArray[j].getText().toString());
                 }
 
-                jacobi(WrapperMatrix.tolerance, WrapperMatrix.iterations);
+                seidel(WrapperMatrix.tolerance, WrapperMatrix.iterations);
                 startActivity(new Intent(getApplicationContext(),AnswerTable.class));
             }
         });
     }
 
-    private void jacobi(double tolerance, int iterations)
+    private void seidel(double tolerance, int iterations)
     {
         int cont=0;
         double dispersion=tolerance+1;
@@ -113,8 +114,8 @@ public class Jacoby extends ActionBarActivity {
 
         while((dispersion>tolerance)&&(cont<iterations))
         {
-            //Calcula las nuevas x de acuerdo a la formula de jacobi
-            x1 = calculateNewJacobi(x);
+            //Calcula las nuevas x de acuerdo a la formula de seidel
+            x1 = calculateNewSeidel(x);
             //Calcula la dispersion con la formula de a norma especificada en el libro guia
             dispersion = calculateNorma(x1, x);
             //Actualiza las x anteriores con las nuevas
@@ -125,8 +126,6 @@ public class Jacoby extends ActionBarActivity {
             }
             cont++;
         }
-
-        WrapperMatrix.matrix = Ab;
 
         //Checkeo condiciones de exito
         if(dispersion<tolerance)
@@ -144,44 +143,52 @@ public class Jacoby extends ActionBarActivity {
         }
     }
 
-    public double [] calculateNewJacobi(double x0[])
-    {
-        double x1[] = new double[x0.length];
-        for (int i = 0; i < A.length; i++)
-        {
-            double suma = 0.0;
-            for (int j = 0; j < A.length; j++)
-            {
-                if (j != i) {
-                    suma += A[i][j] * x0[j];
-                }
-            }
-            x1[i] = (b[i] - suma) / A[i][i];
-        }
-
-        return x1;
-    }
-
-
-    public double calculateNorma(double x1[], double x0[])
+    private double calculateNorma(double[] x1, double[] x)
     {
         double deltas[]= new double[x1.length];
 
         for (int i = 0; i < deltas.length; i++)
         {
-            deltas[i]   = Math.abs(x1[i]-x0[i]);
+            deltas[i]   = Math.abs(x1[i]-x[i]);
         }
 
         double norma=deltas[0];
 
-        for (int i = 1; i < x0.length; i++)
+        for (int i = 1; i < x.length; i++)
         {
             if(norma < deltas[i])
             {
                 norma = deltas[i];
             }
         }
+
         return norma;
+    }
+
+    private double[] calculateNewSeidel(double[] x)
+    {
+        double x1[]=new double[x.length];
+
+        for(int k=0;k < x.length;k++)
+        {
+            x1[k] = x[k];
+        }
+
+        for (int i = 0; i < A.length; i++)
+        {
+            double suma=0.0;
+
+            for (int j = 0; j < A.length; j++)
+            {
+                if(j!=i)
+                {
+                    suma+=A[i][j]*x1[j];
+                }
+            }
+            x1[i]=(b[i]-suma)/A[i][i];
+        }
+
+        return x1;
     }
 
     @Override

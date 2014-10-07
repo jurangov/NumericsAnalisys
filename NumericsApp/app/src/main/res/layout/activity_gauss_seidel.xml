@@ -6,7 +6,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.analisis.numericsapp.app.EquationSystemPackage.Jacoby">
+    tools:context="com.analisis.numericsapp.app.EquationSystemPackage.GaussSeidel">
 
     <LinearLayout
         android:orientation="vertical"
@@ -67,8 +67,8 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Calculate Jacobi"
-            android:id="@+id/buttonJacobi"
+            android:text="Calculate Seidel"
+            android:id="@+id/buttonSeidel"
             android:gravity="bottom"
             android:layout_gravity="center_horizontal" />
     </LinearLayout>

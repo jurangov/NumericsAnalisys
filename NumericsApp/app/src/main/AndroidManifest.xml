@@ -17,36 +17,116 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.analisis.numericsapp.app.IncrementalSearch"
+            android:name="com.analisis.numericsapp.app.OneVarEquation.IncrementalSearch"
             android:label="@string/title_activity_incremental_search" >
         </activity>
         <activity
-            android:name="com.analisis.numericsapp.app.Bisection"
+            android:name="com.analisis.numericsapp.app.OneVarEquation.Bisection"
             android:label="@string/title_activity_bisection" >
         </activity>
         <activity
-            android:name="com.analisis.numericsapp.app.FalseRule"
+            android:name="com.analisis.numericsapp.app.OneVarEquation.FalseRule"
             android:label="@string/title_activity_false_rule" >
         </activity>
         <activity
-            android:name="com.analisis.numericsapp.app.FixedPoint"
+            android:name="com.analisis.numericsapp.app.OneVarEquation.FixedPoint"
             android:label="@string/title_activity_fixed_point" >
         </activity>
         <activity
-            android:name="com.analisis.numericsapp.app.Newton"
+            android:name="com.analisis.numericsapp.app.OneVarEquation.Newton"
             android:label="@string/title_activity_newton" >
         </activity>
         <activity
-            android:name="com.analisis.numericsapp.app.Secant"
+            android:name="com.analisis.numericsapp.app.OneVarEquation.Secant"
             android:label="@string/title_activity_secant" >
         </activity>
         <activity
-            android:name="com.analisis.numericsapp.app.MultipleRoot"
+            android:name="com.analisis.numericsapp.app.OneVarEquation.MultipleRoot"
             android:label="@string/title_activity_multiple_root" >
         </activity>
         <activity
             android:name="com.analisis.numericsapp.app.AnswerTable"
             android:label="@string/title_activity_answer_table" >
+        </activity>
+        <activity
+            android:name="com.analisis.numericsapp.app.Function"
+            android:label="@string/title_activity_function" >
+        </activity>
+        <activity
+            android:name="com.analisis.numericsapp.app.OneVariableEquation"
+            android:label="@string/title_activity_one_variable_equation" >
+        </activity>
+        <activity
+            android:name="com.analisis.numericsapp.app.EquationSystem"
+            android:label="@string/title_activity_equation_system" >
+        </activity>
+        <activity
+            android:name="com.analisis.numericsapp.app.EquationSystemPackage.GaussianElimination"
+            android:label="@string/title_activity_gaussian_elimination" >
+        </activity>
+        <activity
+            android:name="com.analisis.numericsapp.app.EquationSystemPackage.EquationSystemMatrix"
+            android:label="@string/title_activity_equation_system_matrix" >
+        </activity>
+        <activity
+            android:name="com.analisis.numericsapp.app.EquationSystemPackage.PartialPivoting"
+            android:label="@string/title_activity_partial_pivoting" >
+        </activity>
+        <activity
+            android:name="com.analisis.numericsapp.app.EquationSystemPackage.TotalPivoting"
+            android:label="@string/title_activity_total_pivoting" >
+        </activity>
+        <activity
+            android:name="com.analisis.numericsapp.app.EquationSystemPackage.Doolittle"
+            android:label="@string/title_activity_doolittle" >
+        </activity>
+        <activity
+            android:name="com.analisis.numericsapp.app.EquationSystemPackage.Crout"
+            android:label="@string/title_activity_crout" >
+        </activity>
+        <activity
+            android:name="com.analisis.numericsapp.app.EquationSystemPackage.Cholesky"
+            android:label="@string/title_activity_cholesky" >
+        </activity>
+        <activity
+            android:name="com.analisis.numericsapp.app.EquationSystemPackage.Jacoby"
+            android:label="@string/title_activity_jacoby" >
+        </activity>
+        <activity
+            android:name="com.analisis.numericsapp.app.EquationSystemPackage.GaussSeidel"
+            android:label="@string/title_activity_gauss_seidel" >
+        </activity>
+        <activity
+            android:name="com.analisis.numericsapp.app.Interpolation.Lagrange"
+            android:label="@string/title_activity_lagrange" >
+        </activity>
+        <activity
+            android:name="com.analisis.numericsapp.app.Interpolation.InterpolationNewton"
+            android:label="@string/title_activity_interpolation_newton" >
+        </activity>
+        <activity
+            android:name="com.analisis.numericsapp.app.Interpolation"
+            android:label="@string/title_activity_interpolation" >
+        </activity>
+        <activity
+            android:name="com.analisis.numericsapp.app.InterpolationMethod"
+            android:label="@string/title_activity_interpolation_method" >
+        </activity>
+        <activity
+            android:name="com.analisis.numericsapp.app.Integration.SimpleTrapeze"
+            android:label="@string/title_activity_simple_trapeze" >
+        </activity>
+        <activity
+            android:name="com.analisis.numericsapp.app.Integration.Simpson13"
+            android:label="@string/title_activity_simpson13" >
+        </activity>
+        <activity
+            android:name="com.analisis.numericsapp.app.Integration.Simpson38"
+            android:label="@string/title_activity_simpson38" >
+        </activity>
+        <activity
+            android:name="com.analisis.numericsapp.app.IntegrationMethod"
+            android:label="@string/title_activity_integration_method" >
         </activity>
     </application>
 
