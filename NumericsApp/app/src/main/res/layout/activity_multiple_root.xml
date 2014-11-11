@@ -6,6 +6,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
+    android:background="@android:color/holo_orange_light"
     tools:context="com.analisis.numericsapp.app.OneVarEquation.MultipleRoot">
 
     <TextView
@@ -14,17 +15,16 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Function "
         android:id="@+id/textView"
+        android:layout_marginTop="39dp"
         android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_centerHorizontal="true" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/editText"
         android:layout_below="@+id/textView"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -33,16 +33,14 @@
         android:text="F'"
         android:id="@+id/textView2"
         android:layout_below="@+id/editText"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_centerHorizontal="true" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/editText2"
-        android:layout_below="@+id/textView5"
-        android:layout_alignLeft="@+id/textView7"
-        android:layout_alignStart="@+id/textView7" />
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -50,17 +48,15 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text='F"'
         android:id="@+id/textView3"
-        android:layout_below="@+id/editText5"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_below="@+id/editText2"
+        android:layout_centerHorizontal="true" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/editText3"
         android:layout_below="@+id/textView3"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -68,16 +64,15 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Tolerance"
         android:id="@+id/textView4"
-        android:layout_alignTop="@+id/textView"
-        android:layout_toRightOf="@+id/calculateMultipleRoot" />
+        android:layout_below="@+id/editText3"
+        android:layout_centerHorizontal="true" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/editText4"
-        android:layout_above="@+id/textView2"
-        android:layout_alignLeft="@+id/textView4"
-        android:layout_alignStart="@+id/textView4" />
+        android:layout_below="@+id/textView4"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -85,17 +80,16 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Iterations"
         android:id="@+id/textView5"
-        android:layout_below="@+id/textView2"
-        android:layout_alignRight="@+id/textView4"
-        android:layout_alignEnd="@+id/textView4" />
+        android:layout_below="@+id/editText4"
+        android:layout_alignLeft="@+id/textView4"
+        android:layout_alignStart="@+id/textView4" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/editText5"
-        android:layout_below="@+id/textView2"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_below="@+id/textView5"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -103,16 +97,19 @@
         android:text="Calculate"
         android:id="@+id/calculateMultipleRoot"
         android:onClick="CalculateMultipleRoot"
+        android:layout_toEndOf="@+id/textView4"
         android:layout_alignTop="@+id/TableButton"
-        android:layout_toRightOf="@+id/textView" />
+        android:layout_toRightOf="@+id/textView4" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Table"
         android:id="@+id/TableButton"
-        android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/calculateMultipleRoot" />
+        android:layout_toEndOf="@+id/textView2"
+        android:layout_below="@+id/editText6"
+        android:layout_alignLeft="@+id/textView"
+        android:layout_alignStart="@+id/textView" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -129,16 +126,24 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="X value"
         android:id="@+id/textView7"
-        android:layout_alignBottom="@+id/editText3"
-        android:layout_alignLeft="@+id/editText4"
-        android:layout_alignStart="@+id/editText4" />
+        android:layout_below="@+id/editText5"
+        android:layout_centerHorizontal="true" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/editText6"
         android:layout_below="@+id/textView7"
-        android:layout_alignLeft="@+id/textView7"
-        android:layout_alignStart="@+id/textView7" />
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Help"
+        android:id="@+id/HelpMR"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

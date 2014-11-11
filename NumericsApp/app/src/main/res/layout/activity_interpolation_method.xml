@@ -14,16 +14,16 @@
         android:text="Lagrange"
         android:id="@+id/buttonLagrange"
         android:layout_alignParentTop="true"
-        android:layout_alignRight="@+id/button"
-        android:layout_alignEnd="@+id/button"
-        android:layout_alignLeft="@+id/button"
-        android:layout_alignStart="@+id/button" />
+        android:layout_alignRight="@+id/GraphicFuntion"
+        android:layout_alignEnd="@+id/GraphicFuntion"
+        android:layout_alignLeft="@+id/GraphicFuntion"
+        android:layout_alignStart="@+id/GraphicFuntion" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Newton Interpolation"
-        android:id="@+id/button"
+        android:id="@+id/GraphicFuntion"
         android:layout_below="@+id/buttonLagrange"
         android:layout_centerHorizontal="true" />
 </RelativeLayout>

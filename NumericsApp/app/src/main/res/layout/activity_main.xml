@@ -13,6 +13,8 @@
         android:layout_height="wrap_content"
         android:text="One Variable Equations"
         android:id="@+id/oneVarEquation"
+        android:layout_marginTop="131dp"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
     <Button
@@ -30,21 +32,19 @@
         android:layout_height="wrap_content"
         android:text="Interpolation"
         android:id="@+id/buttonInterpolation"
-        android:layout_below="@+id/equationSys"
-        android:layout_alignLeft="@+id/equationSys"
         android:layout_alignStart="@+id/equationSys"
-        android:layout_alignRight="@+id/equationSys"
-        android:layout_alignEnd="@+id/equationSys" />
+        android:layout_alignEnd="@+id/equationSys"
+        android:layout_below="@+id/buttonIntegration"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Integration"
         android:id="@+id/buttonIntegration"
-        android:layout_below="@+id/buttonInterpolation"
-        android:layout_alignRight="@+id/buttonInterpolation"
         android:layout_alignEnd="@+id/buttonInterpolation"
-        android:layout_alignLeft="@+id/buttonInterpolation"
-        android:layout_alignStart="@+id/buttonInterpolation" />
+        android:layout_alignStart="@+id/buttonInterpolation"
+        android:layout_below="@+id/equationSys"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

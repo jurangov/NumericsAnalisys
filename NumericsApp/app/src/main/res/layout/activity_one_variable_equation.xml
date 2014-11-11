@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:text="Increamental Search"
         android:id="@+id/IncrementalSearch"
+        android:layout_below="@+id/MultipleRoot"
         android:layout_centerHorizontal="true" />
 
     <Button
@@ -20,10 +21,12 @@
         android:layout_height="wrap_content"
         android:text="Bisection Method"
         android:id="@+id/Bisection"
-        android:layout_alignEnd="@+id/IncrementalSearch"
-        android:layout_alignStart="@+id/IncrementalSearch"
-        android:layout_below="@+id/IncrementalSearch"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="58dp"
+        android:layout_alignRight="@+id/FalseRule"
+        android:layout_alignEnd="@+id/FalseRule"
+        android:layout_alignLeft="@+id/FalseRule"
+        android:layout_alignStart="@+id/FalseRule" />
 
     <Button
         android:layout_width="wrap_content"
@@ -73,6 +76,14 @@
         android:layout_alignEnd="@+id/FixedPoint"
         android:layout_alignStart="@+id/FixedPoint"
         android:layout_below="@+id/Secant"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Graphic Funtion"
+        android:id="@+id/GraphicFuntion"
+        android:layout_below="@+id/IncrementalSearch"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
