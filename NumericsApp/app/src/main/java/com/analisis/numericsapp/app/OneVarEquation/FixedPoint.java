@@ -1,5 +1,7 @@
 package com.analisis.numericsapp.app.OneVarEquation;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -85,6 +87,28 @@ public class FixedPoint extends ActionBarActivity
 
         //fixedPoint(xValue,iterations,Tol);
         matrix = fixedPoint(xValue,iterations,Tol);
+
+        response.setText("");
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+
+        alert.setTitle("Fixed Point");
+        alert.setMessage(respuesta);
+
+        // Set an EditText view to get user input
+        // final TextView answer = new TextView(this);
+        // answer.setText(response.getText());
+        // alert.setView(answer);
+
+        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+
+
+
+            }
+        });
+
+        alert.show();
+
         WrapperMatrix.matrix = matrix;
     }
 
@@ -103,6 +127,14 @@ public class FixedPoint extends ActionBarActivity
 
         EditText GfunctionText = (EditText)findViewById(R.id.editText5);
         g = new Funcion(GfunctionText.getText().toString());
+
+        WrapperMatrix.tableNames = new String[4];
+
+        WrapperMatrix.tableNames[0] = "iter";
+        WrapperMatrix.tableNames[1] = "Xn";
+        WrapperMatrix.tableNames[2] = "F(Xn)";
+        WrapperMatrix.tableNames[3] = "Error";
+
     }
 
     public static double[][] fixedPoint(double xanterior, int iteraciones, double tolerancia) {
@@ -152,22 +184,24 @@ public class FixedPoint extends ActionBarActivity
 
         if (y == 0) {
 
-            System.out.println("xanterior:" + xanterior + "es raiz");
-            respuesta="xanterior:" + xanterior + "es raiz";
+            System.out.println("xanterior:" + xanterior + "is a root");
+            respuesta="xanterior:" + xanterior + "is a root";
             response.setText(respuesta);
         } else {
 
             if (error < tolerancia) {
 
-                System.out.println("xanterior:" + xanterior + "es raiz con error" + error);
-                respuesta="xanterior:" + xanterior + "es raiz con error" + error;
+                System.out.println("xanterior:" + xanterior + "is a root with error" + error);
+                respuesta="xanterior:" + xanterior + "is a root with error" + error;
                 response.setText(respuesta);
             } else {
 
-                System.out.println("No se encontro raiz");
-                respuesta="No se encontro raiz";
+                System.out.println("root not found");
+                respuesta="root not found";
                 response.setText(respuesta);
             }
+
+            WrapperMatrix.Counter = contador;
 
         }
 

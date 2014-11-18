@@ -1,5 +1,7 @@
 package com.analisis.numericsapp.app.OneVarEquation;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -66,6 +68,28 @@ public class Secant extends ActionBarActivity {
 
         //fixedPoint(xValue,iterations,Tol);
         matrix = secante(xinicial, xsiguiente, iteraciones, tolerancia);
+
+        response.setText("");
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+
+        alert.setTitle("Secant");
+        alert.setMessage(respuesta);
+
+        // Set an EditText view to get user input
+        // final TextView answer = new TextView(this);
+        // answer.setText(response.getText());
+        // alert.setView(answer);
+
+        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+
+
+
+            }
+        });
+
+        alert.show();
+
         WrapperMatrix.matrix = matrix;
     }
 
@@ -84,6 +108,12 @@ public class Secant extends ActionBarActivity {
         tolerancia = Integer.parseInt(toleranceText.getText().toString());
 
         f = WrapperMatrix.GlobalFunction;
+        WrapperMatrix.tableNames = new String[4];
+
+        WrapperMatrix.tableNames[0] = "iter";
+        WrapperMatrix.tableNames[1] = "Xn";
+        WrapperMatrix.tableNames[2] = "F(Xn)";
+        WrapperMatrix.tableNames[3] = "Error";
 
     }
 
@@ -107,8 +137,8 @@ public class Secant extends ActionBarActivity {
         double y1 = f.evaluarFuncion(xsiguiente);
 
         if (y == 0) {
-            System.out.println("Xinicial es raiz");
-            respuesta="Xinicial es raiz";
+            System.out.println("Xinicial is a root");
+            respuesta="Xinicial is a root";
             response.setText(respuesta);
         } else {
             double error = (tolerancia + 1);
@@ -157,29 +187,31 @@ public class Secant extends ActionBarActivity {
             }
 
             if (error <= tolerancia) {
-                System.out.println("x2=" + x2 + "Es raiz con error" + error);
-                respuesta="x2= " + x2 + "Es raiz con error " + error;
+                System.out.println("x2=" + x2 + " is a root with error" + error);
+                respuesta="x2= " + x2 + " is a root with error" + error;
                 response.setText(respuesta);
             } else {
                 if (y1 == 0) {
 
-                    System.out.println("xsiguiente=" + xsiguiente + "Es Raiz");
-                    respuesta="xsiguiente= " + xsiguiente + "Es Raiz";
+                    System.out.println("xsiguiente=" + xsiguiente + " is a root");
+                    respuesta="xsiguiente= " + xsiguiente + " is a root";
                     response.setText(respuesta);
                 } else {
                     if (denominador == 0) {
-                        System.out.println("Division por 0 , imposible de realizar con este metodo");
-                        respuesta="Division por 0 , imposible de realizar con este metodo";
+                        System.out.println("Division by 0, imposible to execute");
+                        respuesta="Division by 0, imposible to execute";
                         response.setText(respuesta);
                     } else {
 
-                        System.out.println("No se encontro raiz");
-                        respuesta="No se encontro raiz";
+                        System.out.println("root not found");
+                        respuesta="Root not found";
                         response.setText(respuesta);
 
                     }
                 }
             }
+
+            WrapperMatrix.Counter = contador;
         }
         return i;
     }

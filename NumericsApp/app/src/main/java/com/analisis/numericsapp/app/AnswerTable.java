@@ -1,6 +1,7 @@
 package com.analisis.numericsapp.app;
 
 import android.content.SyncStatusObserver;
+import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -11,6 +12,7 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import static android.widget.TableLayout.LayoutParams;
 import static java.lang.Class.*;
 
 public class AnswerTable extends ActionBarActivity {
@@ -26,17 +28,46 @@ public class AnswerTable extends ActionBarActivity {
         ScrollView sv = new ScrollView(this);
 
         TableLayout ll=new TableLayout(this);
+        ll.setBackgroundColor(Color.parseColor("#ff000000"));
         HorizontalScrollView hsv = new HorizontalScrollView(this);
 
-        for(int i=0; i<Amatrix.length; i++)
+        TableRow tbrow1=new TableRow(this);
+        tbrow1.setPadding(4,4,4,4);
+
+        for (int n = 0; n<WrapperMatrix.tableNames.length; n++)
+        {
+            TextView tv1=new TextView(this);
+            tv1.setId(n);
+            tv1.setText(WrapperMatrix.tableNames[n]);
+            tv1.setBackgroundColor(Color.parseColor("#FF828282"));
+            tv1.setTextColor(Color.parseColor("#FFFFFFFF"));
+            tv1.setPadding(3,3,3,3);
+
+            tbrow1.addView(tv1);
+        }
+        ll.addView(tbrow1);
+
+        for(int i=0; i<WrapperMatrix.Counter; i++)
         {
             TableRow tbrow2=new TableRow(this);
-
+            tbrow2.setPadding(2,2,2,2);
             for(int j=0; j<Amatrix[i].length; j++)
             {
                 TextView tv1=new TextView(this);
                 tv1.setId(j);
-                tv1.setText(String.format("  |  %.3f", Amatrix[i][j]));
+
+                if (j == Amatrix[i].length - 1)
+                {
+                    tv1.setText(String.format("%.8f", Amatrix[i][j]));
+                }
+                else
+                {
+                    tv1.setText(String.format("%.5f", Amatrix[i][j]));
+                }
+
+                tv1.setBackgroundColor(Color.parseColor("#FFC8C8C8"));
+                tv1.setPadding(3,3,3,3);
+
                 tbrow2.addView(tv1);
             }
             ll.addView(tbrow2);

@@ -146,7 +146,7 @@ public class MainActivity extends ActionBarActivity {
         });
     }
 
-    private void setUpButtonIntegration()
+    /*private void setUpButtonIntegration()
     {
         Button bt1 =(Button) findViewById(R.id.buttonIntegration);
 
@@ -156,6 +156,5 @@ public class MainActivity extends ActionBarActivity {
                 startActivity(new Intent(getApplicationContext(),InterpolationMethod.class));
             }
         });
-    }
-
+    }*/
 }

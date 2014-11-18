@@ -1,5 +1,7 @@
 package com.analisis.numericsapp.app.OneVarEquation;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -83,6 +85,28 @@ public class FalseRule extends ActionBarActivity {
         GetValues();
         //reglaFalsa(xInf, xSup, iterations, tolerance);
         matrix = reglaFalsa(xInf, xSup, iterations, tolerance);
+
+        response.setText("");
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+
+        alert.setTitle("False Rule");
+        alert.setMessage(respuesta);
+
+        // Set an EditText view to get user input
+        // final TextView answer = new TextView(this);
+        // answer.setText(response.getText());
+        // alert.setView(answer);
+
+        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+
+
+
+            }
+        });
+
+        alert.show();
+
         WrapperMatrix.matrix = matrix;
     }
 
@@ -101,6 +125,14 @@ public class FalseRule extends ActionBarActivity {
         tolerance = Double.parseDouble(ToleranceText.getText().toString());
 
         f = WrapperMatrix.GlobalFunction;
+        WrapperMatrix.tableNames = new String[6];
+
+        WrapperMatrix.tableNames[0] = "iter";
+        WrapperMatrix.tableNames[1] = "Xi";
+        WrapperMatrix.tableNames[2] = "Xu";
+        WrapperMatrix.tableNames[3] = "Xmid";
+        WrapperMatrix.tableNames[4] = "F(Xmid)";
+        WrapperMatrix.tableNames[5] = "Error";
     }
 
 
@@ -114,18 +146,18 @@ public class FalseRule extends ActionBarActivity {
 
         if (yInf == 0) {
 
-            System.out.println(xInf + "es raiz");
-            respuesta=xInf + "es raiz";
+            System.out.println(xInf + "is a root");
+            respuesta=xInf + "is a root";
             response.setText(respuesta);
         } else if (ySup == 0) {
 
-            System.out.println(xSup + "es raiz");
-            respuesta=xSup + "es raiz";
+            System.out.println(xSup + "is a root");
+            respuesta=xSup + "is a root";
             response.setText(respuesta);
         } else if ((yInf * ySup) > 0) {
 
-            System.out.println("El intervalo no tiene raices");
-            respuesta="El intervalo no tiene raices";
+            System.out.println("The interval has not roots");
+            respuesta="The interval has not roots";
             response.setText(respuesta);
         } else {
             int contador=0;
@@ -193,21 +225,23 @@ public class FalseRule extends ActionBarActivity {
             if (yMedio == 0)
             {
 
-                System.out.println("xMedio=" + xMedio + "es una raiz");
-                respuesta="xMedio=" + xMedio + "es una raiz";
+                System.out.println("xMedio=" + xMedio + "is a root");
+                respuesta="xMedio=" + xMedio + "is a root";
                 response.setText(respuesta);
             }
             else if (E <= tolerancia) {
 
-                System.out.println("xMedio=" + xMedio + "es una raiz con tolerancia" + tolerancia);
-                respuesta="xMedio=" + xMedio + "es una raiz con tolerancia" + tolerancia;
+                System.out.println("xMedio=" + xMedio + "is a root with tolerance" + tolerancia);
+                respuesta="xMedio=" + xMedio + "is a root with tolerance" + tolerancia;
                 response.setText(respuesta);
             } else {
 
-                System.out.println("No dio :S ");
-                respuesta="No dio :S ";
+                System.out.println("Failure");
+                respuesta="Failure";
                 response.setText(respuesta);
             }
+
+            WrapperMatrix.Counter = contador;
         }
 
         return i ;

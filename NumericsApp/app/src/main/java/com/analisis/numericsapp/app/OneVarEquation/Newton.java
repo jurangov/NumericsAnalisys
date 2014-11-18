@@ -1,5 +1,7 @@
 package com.analisis.numericsapp.app.OneVarEquation;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -83,6 +85,27 @@ public class Newton extends ActionBarActivity
         response = (TextView)findViewById(R.id.textView6);
         GetValues();
 
+        response.setText("");
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+
+        alert.setTitle("Newton");
+        alert.setMessage(respuesta);
+
+        // Set an EditText view to get user input
+        // final TextView answer = new TextView(this);
+        // answer.setText(response.getText());
+        // alert.setView(answer);
+
+        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+
+
+
+            }
+        });
+
+        alert.show();
+
         //fixedPoint(xValue,iterations,Tol);
         matrix = newton(xValue, Tol, iterations);
         WrapperMatrix.matrix = matrix;
@@ -103,6 +126,14 @@ public class Newton extends ActionBarActivity
 
         EditText DfunctionText = (EditText)findViewById(R.id.editText2);
         fd = new Funcion(DfunctionText.getText().toString());
+
+        WrapperMatrix.tableNames = new String[5];
+
+        WrapperMatrix.tableNames[0] = "iter";
+        WrapperMatrix.tableNames[1] = "Xn";
+        WrapperMatrix.tableNames[2] = "F(Xn)";
+        WrapperMatrix.tableNames[3] = "F´(Xn)";
+        WrapperMatrix.tableNames[4] = "Error";
     }
 
 
@@ -146,33 +177,36 @@ public class Newton extends ActionBarActivity
         }
 
         if (y == 0) {
-            System.out.println("xinicial" + xinicial + "es raiz");
+            System.out.println("xinicial" + xinicial + "is a root");
 
-            respuesta="xinicial" + xinicial + "es raiz";
+            respuesta="xinicial" + xinicial + "is a root";
             response.setText(respuesta);
         } else {
 
             if (error <= tolerancia) {
 
-                System.out.println("xinicial" + xinicial + "es raiz con error" + error);
-                respuesta="xinicial" + xinicial + "es raiz con error" + error;
+                System.out.println("xinicial" + xinicial + "is a root with error" + error);
+                respuesta="xinicial" + xinicial + "is a root with error" + error;
                 response.setText(respuesta);
             } else {
 
                 if (yd == 0) {
 
-                    System.out.println("Division por 0 , imposible de realizar con este metodo");
-                    respuesta="Division por 0 , imposible de realizar con este metodo";
+                    System.out.println("Division by 0, imposible to execute");
+                    respuesta="Division by 0, imposible to execute";
                     response.setText(respuesta);
 
                 } else {
 
-                    System.out.println("No se encontro raiz");
-                    respuesta="No se encontro raiz";
+                    System.out.println("Root not found");
+                    respuesta="Root not found";
                     response.setText(respuesta);
 
                 }
             }
+
+            WrapperMatrix.Counter = contador;
+
         }
 
         return i;

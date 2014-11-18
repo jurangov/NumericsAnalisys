@@ -1,14 +1,20 @@
 package com.analisis.numericsapp.app.OneVarEquation;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.analisis.numericsapp.app.AnswerTable;
 import com.analisis.numericsapp.app.Funcion;
+import com.analisis.numericsapp.app.OneVariableEquation;
 import com.analisis.numericsapp.app.R;
 import com.analisis.numericsapp.app.WrapperMatrix;
 
@@ -43,8 +49,21 @@ public class Bisection extends ActionBarActivity {
         return true;
     }
 
-    private void setupButtonTableButton() {
+    private void setupButtonTableButton()
+    {
+        Button bt1 =(Button) findViewById(R.id.TableButton);
 
+        bt1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent myIntent = new Intent();
+                Bundle b = new Bundle();
+                b.putSerializable("clase", "Bisection");
+                myIntent.setClass(getApplicationContext(), AnswerTable.class);
+                myIntent.putExtras(b);
+                startActivity(myIntent);
+            }
+        });
     }
 
     @Override
@@ -63,8 +82,30 @@ public class Bisection extends ActionBarActivity {
     {
         response = (TextView)findViewById(R.id.textView7);
         GetValues();
+
         //bisection(xValue, XsValue, iterations, tolerance);
         matrix = bisection(xValue, XsValue, iterations, tolerance);
+        response.setText("");
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+
+        alert.setTitle("Bisection");
+        alert.setMessage(respuesta);
+
+        // Set an EditText view to get user input
+       // final TextView answer = new TextView(this);
+       // answer.setText(response.getText());
+       // alert.setView(answer);
+
+        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+
+
+
+            }
+        });
+
+        alert.show();
+
         WrapperMatrix.matrix = matrix;
     }
 
@@ -83,6 +124,14 @@ public class Bisection extends ActionBarActivity {
         tolerance = Double.parseDouble(ToleranceText.getText().toString());
 
         f = WrapperMatrix.GlobalFunction;
+        WrapperMatrix.tableNames = new String[6];
+
+        WrapperMatrix.tableNames[0] = "iter";
+        WrapperMatrix.tableNames[1] = "Xi";
+        WrapperMatrix.tableNames[2] = "Xu";
+        WrapperMatrix.tableNames[3] = "Xmid";
+        WrapperMatrix.tableNames[4] = "Ymid";
+        WrapperMatrix.tableNames[5] = "Error";
     }
 
 
@@ -91,16 +140,16 @@ public class Bisection extends ActionBarActivity {
         double yInf = f.evaluarFuncion(xInf);
         double ySup = f.evaluarFuncion(xSup);
         if (yInf == 0) {
-            System.out.println(xInf + "xInf es raiz");
-            respuesta=xInf + "xInf es raiz";
+            System.out.println(xInf + "xInf is a root");
+            respuesta=xInf + "xInf is a root";
             response.setText(respuesta);
         } else if (ySup == 0) {
-            System.out.println(xSup + "xSup es raiz");
-            respuesta=xSup + "xSup es raiz";
+            System.out.println(xSup + "xSup is a root");
+            respuesta=xSup + "xSup is a root";
             response.setText(respuesta);
         } else if ((yInf * ySup) > 0) {
-            System.out.println("Posiblemente");
-            respuesta="Posiblemente";
+            System.out.println("Wrong interval");
+            respuesta="Wrong Interval";
             response.setText(respuesta);
         } else {
 
@@ -147,20 +196,24 @@ public class Bisection extends ActionBarActivity {
                 }
                 System.out.println("");
             }
+
             if (yMedio == 0) {
-                System.out.println("xMedio=" + xMedio + "es raiz");
-                respuesta="xMedio=" + xMedio + "es raiz";
+                System.out.println("xMedio=" + xMedio + "is a root");
+                respuesta="xMedio=" + xMedio + "is a root";
                 response.setText(respuesta);
             } else if (E < tolerance) {
-                System.out.println("xMedio=" + xMedio + "es raiz con error " + E);
-                respuesta="xMedio=" + xMedio + "es raiz con error " + E;
+                System.out.println("xMedio=" + xMedio + "is a root with error " + E);
+                respuesta="xMedio=" + xMedio + "is a root with error " + E;
                 response.setText(respuesta);
             } else {
-                System.out.println("fracaso");
-                respuesta="fracaso";
+                System.out.println("failure");
+                respuesta="failure";
                 response.setText(respuesta);
             }
+
+            WrapperMatrix.Counter = contador;
         }
+
         return i;
     }
     public static String SetRespuesta(){

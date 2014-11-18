@@ -1,5 +1,7 @@
 package com.analisis.numericsapp.app.OneVarEquation;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -85,6 +87,28 @@ public class MultipleRoot extends ActionBarActivity
 
         //fixedPoint(xValue,iterations,Tol);
         matrix = multipleRoots(xValue, Tol, iterations);
+
+        response.setText("");
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+
+        alert.setTitle("Multiple Roots");
+        alert.setMessage(respuesta);
+
+        // Set an EditText view to get user input
+        // final TextView answer = new TextView(this);
+        // answer.setText(response.getText());
+        // alert.setView(answer);
+
+        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+
+
+
+            }
+        });
+
+        alert.show();
+
         WrapperMatrix.matrix = matrix;
     }
 
@@ -106,13 +130,22 @@ public class MultipleRoot extends ActionBarActivity
 
         EditText D2functionText = (EditText)findViewById(R.id.editText3);
         f2d = new Funcion(D2functionText.getText().toString());
+
+        WrapperMatrix.tableNames = new String[6];
+
+        WrapperMatrix.tableNames[0] = "iter";
+        WrapperMatrix.tableNames[1] = "Xi";
+        WrapperMatrix.tableNames[2] = "F(Xi)";
+        WrapperMatrix.tableNames[3] = "F(Xi)";
+        WrapperMatrix.tableNames[4] = "F´´(Xi)";
+        WrapperMatrix.tableNames[5] = "Error";
     }
 
 
 
     public static double[][] multipleRoots(double xinicial, double tolerancia, int iteraciones) {
 
-        double i[][] = new double[iteraciones][7];
+        double i[][] = new double[iteraciones][6];
 
         double y = f.evaluarFuncion(xinicial);
         double fd = f1d.evaluarFuncion(xinicial);
@@ -161,31 +194,33 @@ public class MultipleRoot extends ActionBarActivity
 
         if (y == 0) {
 
-            System.out.println("xsiguiente:" + xsiguiente + "Es Raiz");
-            respuesta="xsiguiente:" + xsiguiente + "Es Raiz";
+            System.out.println("xsiguiente:" + xsiguiente + " is a root");
+            respuesta="xsiguiente:" + xsiguiente + " is a root";
             response.setText(respuesta);
         } else {
 
             if (error <= tolerancia) {
 
-                System.out.println("xinicial:" + xinicial + "Es raiz con error");
-                respuesta="xinicial:" + xinicial + "Es raiz con error";
+                System.out.println("xinicial:" + xinicial + " is a root with error");
+                respuesta="xinicial:" + xinicial + " is a root with error";
                 response.setText(respuesta);
             } else {
 
                 if (denominador == 0) {
 
-                    System.out.println("Division por 0 , imposible de realizar con este metodo");
-                    respuesta="Division por 0 , imposible de realizar con este metodo";
+                    System.out.println("Division by 0, imposible to execute");
+                    respuesta="Division by 0, imposible to execute";
                     response.setText(respuesta);
 
                 } else {
 
-                    System.out.println("No se encontro raiz");
-                    respuesta="No se encontro raiz";
+                    System.out.println("Root not found");
+                    respuesta="Root not found";
                     response.setText(respuesta);
                 }
             }
+
+            WrapperMatrix.Counter = contador;
         }
 
         return i;

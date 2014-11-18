@@ -1,5 +1,7 @@
 package com.analisis.numericsapp.app.OneVarEquation;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -81,6 +83,28 @@ public class IncrementalSearch extends ActionBarActivity
         GetValues();
 
         matrix = busquedaIncremental(xValue, delta, iterations);
+
+        response.setText("");
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+
+        alert.setTitle("Incremental Search");
+        alert.setMessage(respuesta);
+
+        // Set an EditText view to get user input
+        // final TextView answer = new TextView(this);
+        // answer.setText(response.getText());
+        // alert.setView(answer);
+
+        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+
+
+
+            }
+        });
+
+        alert.show();
+
         WrapperMatrix.matrix = matrix;
     }
 
@@ -96,6 +120,11 @@ public class IncrementalSearch extends ActionBarActivity
         iterations = Integer.parseInt(iterationsText.getText().toString());
 
         f = WrapperMatrix.GlobalFunction;
+        WrapperMatrix.tableNames = new String[3];
+
+        WrapperMatrix.tableNames[0] = "iter";
+        WrapperMatrix.tableNames[1] = "Xn";
+        WrapperMatrix.tableNames[2] = "F(Xn)";
     }
 
     public static double[][]  busquedaIncremental(double xanterior, double incremento, int iteraciones)
@@ -107,8 +136,8 @@ public class IncrementalSearch extends ActionBarActivity
 
         if (yanterior == 0)
         {
-            System.out.println(xanterior + "es raiz");
-            respuesta=xanterior + "es raiz";
+            System.out.println(xanterior + " is a root");
+            respuesta=xanterior + " is a root";
             response.setText(respuesta);
         }
         else
@@ -145,26 +174,28 @@ public class IncrementalSearch extends ActionBarActivity
             contadorFilas++;
             if (yactual == 0)
             {
-                System.out.println(xactual + "es una raiz");
-                respuesta= xactual + "es una raiz";
+                System.out.println(xactual + " is a root");
+                respuesta= xactual + " is a root";
                 response.setText(respuesta);
             }
             else
             {
                 if (yactual * yanterior < 0)
                 {
-                    respuesta="los puntos:" + xanterior + ";" + xactual + "forman un intervalo";
+                    respuesta="los puntos:" + xanterior + ";" + xactual + " made an interval";
                     response.setText(respuesta);
                     // System.out.println(i);
                 }
                 else
                 {
-                    System.out.println("No se encontro raiz ");
-                    respuesta="No se encontro raiz ";
+                    System.out.println("Root not found");
+                    respuesta="Root not found";
                     response.setText(respuesta);
                     // System.out.println(i);
                 }
             }
+
+            WrapperMatrix.Counter = contador;
             // System.out.println("xanterior:"+xanterior);
             // System.out.println("yanterior:"+yanterior);
         }
