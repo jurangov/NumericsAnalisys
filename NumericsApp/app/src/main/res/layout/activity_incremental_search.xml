@@ -6,7 +6,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    android:background="@android:color/holo_orange_light"
+    android:background="@drawable/background"
     tools:context="com.analisis.numericsapp.app.OneVarEquation.IncrementalSearch">
 
     <TextView
@@ -17,7 +17,8 @@
         android:id="@+id/textView2"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="75dp" />
+        android:layout_marginTop="75dp"
+        android:textColor="#ffffffff" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -33,7 +34,8 @@
         android:text="Delta"
         android:id="@+id/textView3"
         android:layout_below="@+id/editText2"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textColor="#ffffffff" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -50,7 +52,8 @@
         android:text="Iterations"
         android:id="@+id/textView4"
         android:layout_below="@+id/editText3"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textColor="#ffffffff" />
 
     <EditText
         android:layout_width="wrap_content"

@@ -16,17 +16,20 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="X value"
         android:id="@+id/textView2"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:textColor="#ffffffff" />
+        android:textColor="#ffffffff"
+        android:layout_below="@+id/GraphicFuntion"
+        android:layout_alignLeft="@+id/textView6"
+        android:layout_alignStart="@+id/textView6" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/editText2"
-        android:layout_below="@+id/textView2"
-        android:layout_centerHorizontal="true"
-        android:textColor="#ffffffff" />
+        android:textColor="#ffffffff"
+        android:layout_marginTop="41dp"
+        android:layout_toStartOf="@+id/textView5"
+        android:layout_below="@+id/GraphicFuntion"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -38,7 +41,7 @@
         android:layout_toLeftOf="@+id/GraphicFuntion"
         android:layout_toStartOf="@+id/GraphicFuntion"
         android:layout_marginTop="65dp"
-        android:textColor="#ffffffff" />
+        android:textColor="#ff000000" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -58,7 +61,7 @@
         android:layout_alignBaseline="@+id/calculateBisection"
         android:layout_alignBottom="@+id/calculateBisection"
         android:layout_toLeftOf="@+id/textView6"
-        android:textColor="#ffffffff" />
+        android:textColor="#ff000000" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -66,10 +69,10 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Xs value"
         android:id="@+id/textView3"
+        android:textColor="#ffffffff"
         android:layout_below="@+id/editText2"
-        android:layout_alignRight="@+id/textView2"
-        android:layout_alignEnd="@+id/textView2"
-        android:textColor="#ffffffff" />
+        android:layout_alignLeft="@+id/textView4"
+        android:layout_alignStart="@+id/textView4" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -85,10 +88,10 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Tolerance"
         android:id="@+id/textView4"
+        android:textColor="#ffffffff"
         android:layout_alignTop="@+id/textView5"
-        android:layout_alignLeft="@+id/textView3"
-        android:layout_alignStart="@+id/textView3"
-        android:textColor="#ffffffff" />
+        android:layout_alignLeft="@+id/textView6"
+        android:layout_alignStart="@+id/textView6" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -133,6 +136,6 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:textColor="#ffffffff" />
+        android:textColor="#ff000000" />
 
 </RelativeLayout>
