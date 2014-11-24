@@ -93,4 +93,76 @@
         android:layout_alignEnd="@+id/gaussSeidel"
         android:layout_alignLeft="@+id/gaussSeidel"
         android:layout_alignStart="@+id/gaussSeidel" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Help"
+        android:id="@+id/buttonPartial"
+        android:layout_above="@+id/totalPivoting"
+        android:layout_toRightOf="@+id/partialPivoting"
+        android:layout_toEndOf="@+id/partialPivoting" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Help"
+        android:id="@+id/buttonTotal"
+        android:layout_above="@+id/doolittle"
+        android:layout_toRightOf="@+id/totalPivoting"
+        android:layout_toEndOf="@+id/totalPivoting" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Help"
+        android:id="@+id/buttonGaussian"
+        android:layout_above="@+id/partialPivoting"
+        android:layout_toRightOf="@+id/gaussianElimintation"
+        android:layout_toEndOf="@+id/gaussianElimintation" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Help"
+        android:id="@+id/buttonDoolittle"
+        android:layout_above="@+id/crout"
+        android:layout_toRightOf="@+id/doolittle"
+        android:layout_toEndOf="@+id/doolittle" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Help"
+        android:id="@+id/buttonCrout"
+        android:layout_above="@+id/cholesky"
+        android:layout_toRightOf="@+id/crout"
+        android:layout_toEndOf="@+id/crout" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Help"
+        android:id="@+id/buttonCholesky"
+        android:layout_above="@+id/gaussSeidel"
+        android:layout_toRightOf="@+id/cholesky"
+        android:layout_toEndOf="@+id/cholesky" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Help"
+        android:id="@+id/buttonSeidel"
+        android:layout_above="@+id/jacobi"
+        android:layout_toRightOf="@+id/gaussSeidel"
+        android:layout_toEndOf="@+id/gaussSeidel" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Help"
+        android:id="@+id/buttonJacobi"
+        android:layout_below="@+id/buttonSeidel"
+        android:layout_toRightOf="@+id/jacobi"
+        android:layout_toEndOf="@+id/jacobi" />
+
 </RelativeLayout>
