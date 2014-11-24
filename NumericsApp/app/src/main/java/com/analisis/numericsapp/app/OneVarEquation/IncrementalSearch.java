@@ -37,6 +37,7 @@ public class IncrementalSearch extends ActionBarActivity
         setContentView(R.layout.activity_incremental_search);
     }
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         
@@ -221,5 +222,27 @@ public class IncrementalSearch extends ActionBarActivity
 
         f=funcion;
 
+    }
+    public void helpbi(View h)
+    {
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+
+        alert.setTitle("Incremental Search Help");
+        alert.setMessage("texto de la ayuda");
+
+        // Set an EditText view to get user input
+        // final TextView answer = new TextView(this);
+        // answer.setText(response.getText());
+        // alert.setView(answer);
+
+        alert.setPositiveButton("Exit", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+
+
+
+            }
+        });
+
+        alert.show();
     }
 }

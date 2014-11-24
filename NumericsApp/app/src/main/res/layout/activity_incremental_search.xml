@@ -25,7 +25,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/editText2"
         android:layout_below="@+id/textView2"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textColor="#ffffffff" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -43,7 +44,8 @@
         android:id="@+id/editText3"
         android:layout_alignStart="@+id/editText2"
         android:layout_below="@+id/textView3"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textColor="#ffffffff" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -61,7 +63,8 @@
         android:id="@+id/editText4"
         android:layout_alignStart="@+id/editText3"
         android:layout_below="@+id/textView4"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textColor="#ffffffff" />
 
     <Button
         android:layout_width="wrap_content"
@@ -98,6 +101,7 @@
         android:layout_height="wrap_content"
         android:text="Help"
         android:id="@+id/helpIS"
+        android:onClick="helpbi"
         android:layout_toEndOf="@+id/TableButton"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
