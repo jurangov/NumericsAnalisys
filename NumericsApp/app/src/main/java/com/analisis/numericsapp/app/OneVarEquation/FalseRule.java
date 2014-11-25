@@ -267,5 +267,38 @@ public class FalseRule extends ActionBarActivity {
         f=funcion;
 
     }
+    public void helpFalseRule(View h3)
+    {
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
 
+        alert.setTitle("False Rule Help");
+        alert.setMessage("firs you input the values of x, for the low interval you put the value in x and for the superior value you put the value in xs, the tolarance and the iteration are the stopping criterions\n" +
+                "\n" +
+                "This is how false rule works: \n" +
+                "\n" +
+                "It consist to find the intersection of a line formed by point a and b in the x-axi.\n" +
+                "If you have two points (a, f (a)) and (b, f (b)) and draw the line joining these two points,\n" +
+                "we see that a point is below the x-axis and another above this, and an intermediate point (Xm, 0),\n" +
+                "with this mid-point limits can compare and get a new interval\n" +
+                "If f (A) f (B) <0, then the root is at the left side of the interval.\n" +
+                "If f (A) f (B)> 0, then the root is on the right side of the interval.\n" +
+                "\n" +
+                "To find the intersection of the line with the X-axis use the following formula:\n" +
+                "\n" +
+                "Xm = a - ((f (a) * (b - a)) / (f (b) - f (a)))");
+        // Set an EditText view to get user input
+        // final TextView answer = new TextView(this);
+        // answer.setText(response.getText());
+        // alert.setView(answer);
+
+        alert.setPositiveButton("Exit", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+
+
+
+            }
+        });
+
+        alert.show();
+    }
 }

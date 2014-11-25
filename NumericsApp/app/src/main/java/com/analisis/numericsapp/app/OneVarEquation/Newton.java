@@ -211,4 +211,36 @@ public class Newton extends ActionBarActivity
 
         return i;
     }
+    public void helpNewton(View h5)
+    {
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+
+        alert.setTitle("Newton Help");
+        alert.setMessage("this method is based in fix point\n" +
+                "This method consist to find better approximations to the roots of real valued function.\n" +
+                "is faster than secant\n" +
+                "this methos have a proporcionality of his error is cuadratic\n" +
+                "Given a function ƒ defined over the reals x, and its derivative ƒ', \n" +
+                "we begin with a first guess x0 for a root of the function f.\n" +
+                "\n" +
+                "Having defined the function g, it must perform the following steps, as in the fixed-point method.\n" +
+                "\n" +
+                "You must select an initial approximation Xo\n" +
+                "Calculated X1 = g (Xo)\n" +
+                "An estimated X2 = g (X1)........................ Xn = g (Xn-1)\n");
+        // Set an EditText view to get user input
+        // final TextView answer = new TextView(this);
+        // answer.setText(response.getText());
+        // alert.setView(answer);
+
+        alert.setPositiveButton("Exit", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+
+
+
+            }
+        });
+
+        alert.show();
+    }
 }

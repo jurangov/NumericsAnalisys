@@ -228,8 +228,7 @@ public class IncrementalSearch extends ActionBarActivity
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
 
         alert.setTitle("Incremental Search Help");
-        alert.setMessage("texto de la ayuda");
-
+        alert.setMessage("It consist in start with value of x evaluated in the function with little's increments in order to search a root or an interval with contents a root(s), this what we get it's because we finding a sign change in the evaluation or get a zero. Which we found the interval we can use another method to find the root(s) ");
         // Set an EditText view to get user input
         // final TextView answer = new TextView(this);
         // answer.setText(response.getText());

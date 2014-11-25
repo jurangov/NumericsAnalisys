@@ -125,6 +125,7 @@
         android:layout_height="wrap_content"
         android:text="Help"
         android:id="@+id/HelpFR"
+        android:onClick="helpFalseRule"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />

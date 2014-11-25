@@ -225,5 +225,30 @@ public class MultipleRoot extends ActionBarActivity
 
         return i;
     }
+    public void helpMulRoots(View h7)
+    {
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
 
+        alert.setTitle("Multiple Roots Help");
+        alert.setMessage("The multiple root method is also known as Newton's method improved, and its structure is basically very similar except that they must find the second derivative and must take into account the following expression :\n" +
+                "\n" +
+                "Xn +1 = Xn - ( (f ( Xn) * f ' (Xn) ) / ( ( f ' (Xn) ^ 2 - (f ( Xn) * f'' ( Xn )))\n" +
+                "\n" +
+                "Having defined the above expression , we proceed in a manner similar to the method of Newton\n" +
+                "You must select initial approximation Xo\n" +
+                "It is estimated ---------- X1 = Xn = Expression Expression (n -1 )\n" +
+                "And repeats the previous step until you get to an approximation");
+        // Set an EditText view to get user input
+        // final TextView answer = new TextView(this);
+        // answer.setText(response.getText());
+        // alert.setView(answer);
+
+        alert.setPositiveButton("Exit", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+
+            }
+        });
+
+        alert.show();
+    }
 }

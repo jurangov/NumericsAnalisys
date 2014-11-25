@@ -229,4 +229,28 @@ public class Bisection extends ActionBarActivity {
         f=funcion;
     }
 
+    public void helpbisection (View h1)
+    {
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+
+        alert.setTitle("Bisection Help");
+        alert.setMessage("We choose an initial interval for f ( x ), in this case is x value what is a inferior value of the interval and xs value what is a superior value of the interval, we have also introduce de tolerance and the iteration for stoppping criterion. \n" +
+                "Then attempts to locate more accurately the root within the range halving and observing if the initial conditions are maintained, Xmed is compared with each of the interval limits and shows that product changes sign and assign a new interval, we repeats the process , and is getting smaller the range up to an approximation of the exact root or root .");
+
+        // Set an EditText view to get user input
+        // final TextView answer = new TextView(this);
+        // answer.setText(response.getText());
+        // alert.setView(answer);
+
+        alert.setPositiveButton("Exit", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+
+
+
+            }
+        });
+
+        alert.show();
+    }
+
 }

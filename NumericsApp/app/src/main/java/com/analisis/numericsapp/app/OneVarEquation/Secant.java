@@ -236,5 +236,38 @@ public class Secant extends ActionBarActivity {
         f=funcion;
 
     }
+    public void helpSecant(View h6)
+    {
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+
+        alert.setTitle("Secant Help");
+        alert.setMessage("This method is a variant of the Newton method but instead of calculate the function in the point,\n" +
+                "it approximates the slope of the straight line connecting the function evaluated at the point of \n" +
+                "study and at the point of the previous iteration.\n" +
+                "\n" +
+                "The parameters for this method are:\n" +
+                "\n" +
+                "\n" +
+                "\n" +
+                "Initials values X0 and X1, tolerance and iterations. \n" +
+                "On this method change how we find xn+1\n" +
+                "this meths is less faster then newton method but is more used because we don't have to know the derivate\n" +
+                "\n" +
+                "This is the most used method in this section ");
+        // Set an EditText view to get user input
+        // final TextView answer = new TextView(this);
+        // answer.setText(response.getText());
+        // alert.setView(answer);
+
+        alert.setPositiveButton("Exit", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+
+
+
+            }
+        });
+
+        alert.show();
+    }
 
 }

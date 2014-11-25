@@ -117,6 +117,7 @@
         android:layout_height="wrap_content"
         android:text="Help"
         android:id="@+id/HelpN"
+        android:onClick="helpNewton"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />

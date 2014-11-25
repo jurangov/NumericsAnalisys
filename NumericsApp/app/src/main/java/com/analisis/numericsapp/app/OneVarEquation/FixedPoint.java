@@ -207,4 +207,26 @@ public class FixedPoint extends ActionBarActivity
 
         return i;
     }
+    public void helpFixedPoint(View h4)
+    {
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+
+        alert.setTitle("Fixed Point Help");
+        alert.setMessage("-we must first find a interval  which contains a possible root is continuous and we can do this with the method of incremental search\n" +
+                "-It consist on a method to find the root of a function\n" +
+                "-Input a function F(x), an function G what whe found like this x=G(x) some times we have to try diferentes equatios for g because not all of this work well, an initial value X0, a tolerance and a number of iterationswhich are stopping criterions.\n" +
+                "-We calculated X1 = g (Xo) and repeats the previous step until you get to an approximation");
+        // Set an EditText view to get user input
+        // final TextView answer = new TextView(this);
+        // answer.setText(response.getText());
+        // alert.setView(answer);
+
+        alert.setPositiveButton("Exit", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+
+            }
+        });
+
+        alert.show();
+    }
 }
