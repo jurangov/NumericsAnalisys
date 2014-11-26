@@ -20,7 +20,7 @@ import com.analisis.numericsapp.app.WrapperMatrix;
 public class IncrementalSearch extends ActionBarActivity
 {
 
-    public int xValue;
+    public double xValue;
     public int delta;
     public int iterations;
 
@@ -112,7 +112,7 @@ public class IncrementalSearch extends ActionBarActivity
     public void GetValues()
     {
         EditText xvalueText = (EditText)findViewById(R.id.editText2);
-        xValue = Integer.parseInt(xvalueText.getText().toString());
+        xValue = Double.parseDouble(xvalueText.getText().toString());
 
         EditText deltaText = (EditText)findViewById(R.id.editText3);
         delta = Integer.parseInt(deltaText.getText().toString());

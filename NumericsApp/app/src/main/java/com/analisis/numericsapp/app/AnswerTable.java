@@ -62,7 +62,14 @@ public class AnswerTable extends ActionBarActivity {
                 }
                 else
                 {
-                    tv1.setText(String.format("%.5f", Amatrix[i][j]));
+                    if (j == 0)
+                    {
+                        tv1.setText(String.format("%", Amatrix[i][j]));
+                    }
+                    else
+                    {
+                        tv1.setText(String.format("%.5f", Amatrix[i][j]));
+                    }
                 }
 
                 tv1.setBackgroundColor(Color.parseColor("#FFC8C8C8"));
